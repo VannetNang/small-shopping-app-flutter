@@ -12,7 +12,18 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData.dark(useMaterial3: true),
+      theme: ThemeData(
+        useMaterial3: true,
+
+        // TEXT STYLE
+        textTheme: TextTheme(
+          titleLarge: TextStyle(
+            fontFamily: 'Lato',
+            fontSize: 32,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
       home: HomeScreen(),
     );
   }
