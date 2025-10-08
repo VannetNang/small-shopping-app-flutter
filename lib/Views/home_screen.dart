@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
   final border = const OutlineInputBorder(
     borderRadius: BorderRadius.horizontal(
       left: Radius.circular(32),
@@ -14,6 +19,9 @@ class HomeScreen extends StatelessWidget {
       strokeAlign: BorderSide.strokeAlignCenter,
     ),
   );
+
+  final List<String> filteredItems = ['All', 'Adidas', 'Nike', 'Bata'];
+  String selectedItem = 'All';
 
   @override
   Widget build(BuildContext context) {
@@ -45,6 +53,43 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
               ],
+            ),
+
+            // Filtered cards
+            SizedBox(
+              height: 80,
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: filteredItems.length,
+                itemBuilder: (context, index) {
+                  final currentItem = filteredItems[index];
+
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    child: GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          selectedItem = currentItem;
+                        });
+                      },
+                      child: Chip(
+                        label: Text(currentItem),
+                        backgroundColor: selectedItem == currentItem
+                            ? Theme.of(context).colorScheme.primary
+                            : const Color.fromARGB(255, 235, 231, 231),
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 18,
+                          vertical: 14,
+                        ),
+                        shape: RoundedRectangleBorder(
+                          side: BorderSide(color: Colors.white),
+                          borderRadius: BorderRadius.circular(32),
+                        ),
+                      ),
+                    ),
+                  );
+                },
+              ),
             ),
           ],
         ),

@@ -14,6 +14,14 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         useMaterial3: true,
+        // Force white background
+        scaffoldBackgroundColor: Colors.white,
+
+        // PRIMARY COLORS
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: const Color.fromRGBO(254, 206, 1, 1),
+          primary: const Color.fromRGBO(254, 206, 1, 1),
+        ),
 
         // TEXT STYLE
         textTheme: TextTheme(
