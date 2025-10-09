@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:small_shopping_app_flutter/Models/data.dart';
+import 'package:small_shopping_app_flutter/Views/render_product.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -87,6 +89,26 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ),
                     ),
+                  );
+                },
+              ),
+            ),
+
+            // Products Rendered
+            const SizedBox(height: 16),
+            Expanded(
+              child: ListView.builder(
+                itemCount: products.length,
+                itemBuilder: (context, index) {
+                  final product = products[index];
+
+                  return RenderProduct(
+                    productName: product['name'] as String,
+                    productPrice: product['price'] as double,
+                    productImage: product['imageUrl'] as String,
+                    productColor: index.isEven
+                        ? const Color.fromARGB(255, 169, 209, 228)
+                        : const Color.fromARGB(255, 235, 231, 231),
                   );
                 },
               ),
