@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:small_shopping_app_flutter/Views/home_screen.dart';
+import 'package:small_shopping_app_flutter/shopping_app.dart';
 
 void main() {
   runApp(MyApp());
@@ -16,6 +16,9 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         // Force white background
         scaffoldBackgroundColor: Colors.white,
+
+        // APP BAR STYLE
+        appBarTheme: AppBarTheme(backgroundColor: Colors.white),
 
         // PRIMARY COLORS
         colorScheme: ColorScheme.fromSeed(
@@ -38,7 +41,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home: HomeScreen(),
+      home: ShoppingApp(),
     );
   }
 }
