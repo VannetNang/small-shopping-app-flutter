@@ -26,10 +26,7 @@ class RenderProduct extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            productName,
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-          ),
+          Text(productName, style: Theme.of(context).textTheme.titleMedium),
           SizedBox(height: 6),
 
           Text(

@@ -26,9 +26,15 @@ class MyApp extends StatelessWidget {
         // TEXT STYLE
         textTheme: TextTheme(
           titleLarge: TextStyle(
-            fontFamily: 'Lato',
             fontSize: 32,
             fontWeight: FontWeight.bold,
+            fontFamily: 'Lato',
+          ),
+
+          titleMedium: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+            fontFamily: 'Lato',
           ),
         ),
       ),

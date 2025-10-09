@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:small_shopping_app_flutter/Models/data.dart';
+import 'package:small_shopping_app_flutter/Views/product_detail_screen.dart';
 import 'package:small_shopping_app_flutter/Views/render_product.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -102,13 +103,27 @@ class _HomeScreenState extends State<HomeScreen> {
                 itemBuilder: (context, index) {
                   final product = products[index];
 
-                  return RenderProduct(
-                    productName: product['name'] as String,
-                    productPrice: product['price'] as double,
-                    productImage: product['imageUrl'] as String,
-                    productColor: index.isEven
-                        ? const Color.fromARGB(255, 169, 209, 228)
-                        : const Color.fromARGB(255, 235, 231, 231),
+                  return GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return ProductDetailScreen(
+                              product: product as Map<String, dynamic>,
+                            );
+                          },
+                        ),
+                      );
+                    },
+                    child: RenderProduct(
+                      productName: product['name'] as String,
+                      productPrice: product['price'] as double,
+                      productImage: product['imageUrl'] as String,
+                      productColor: index.isEven
+                          ? const Color.fromARGB(255, 169, 209, 228)
+                          : const Color.fromARGB(255, 235, 231, 231),
+                    ),
                   );
                 },
               ),
