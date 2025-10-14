@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:small_shopping_app_flutter/Models/data.dart';
+import 'package:provider/provider.dart';
+import 'package:small_shopping_app_flutter/ViewModels/cart_model.dart';
 
 class CheckoutScreen extends StatelessWidget {
   const CheckoutScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final cart = context.watch<CartModel>().cart;
+
     return Scaffold(
       appBar: AppBar(title: Center(child: Text('Cart'))),
 

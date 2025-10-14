@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:small_shopping_app_flutter/ViewModels/cart_model.dart';
 
 class ProductDetailScreen extends StatefulWidget {
   final Map<String, dynamic> product;
@@ -11,6 +13,29 @@ class ProductDetailScreen extends StatefulWidget {
 
 class _ProductDetailScreenState extends State<ProductDetailScreen> {
   int selectedSize = 0;
+
+  void addProductToCart() {
+    if (selectedSize == 0) {
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text('Please select size!')));
+
+      return;
+    }
+
+    context.read<CartModel>().addProduct({
+      'id': widget.product['id'],
+      'name': widget.product['name'],
+      'price': widget.product['price'],
+      'imageUrl': widget.product['imageUrl'],
+      'company': widget.product['company'],
+      'sizes': selectedSize,
+    });
+    
+    ScaffoldMessenger.of(
+      context,
+    ).showSnackBar(SnackBar(content: Text('Product added successfully!')));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -84,7 +109,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                     width: double.infinity,
                     height: 45,
                     child: ElevatedButton(
-                      onPressed: () => print('Size clicked...'),
+                      onPressed: () => addProductToCart(),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Theme.of(context).colorScheme.primary,
                         foregroundColor: Colors.black,

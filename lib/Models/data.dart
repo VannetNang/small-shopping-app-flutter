@@ -32,22 +32,3 @@ final products = [
     'sizes': [8, 9, 10],
   },
 ];
-
-final cart = [
-  {
-    'id': '3',
-    'name': 'Jordan Shoes',
-    'price': 420.69,
-    'imageUrl': 'assets/images/shoes_4.png',
-    'company': 'Nike',
-    'sizes': 9,
-  },
-  {
-    'id': '2',
-    'name': 'Bata Women\'s Shoes',
-    'price': 28.95,
-    'imageUrl': 'assets/images/shoes_3.png',
-    'company': 'Bata',
-    'sizes': 10,
-  },
-];
