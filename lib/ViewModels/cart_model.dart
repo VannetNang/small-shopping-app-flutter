@@ -5,9 +5,11 @@ class CartModel extends ChangeNotifier {
 
   void addProduct(product) {
     cart.add(product);
+    notifyListeners();
   }
 
   void removeProduct(product) {
     cart.remove(product);
+    notifyListeners();
   }
 }

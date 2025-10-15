@@ -37,7 +37,68 @@ class CheckoutScreen extends StatelessWidget {
                       radius: 30,
                       child: Image.asset(cartItem['imageUrl'] as String),
                     ),
-                    trailing: Icon(Icons.delete, color: Colors.red),
+                    trailing: GestureDetector(
+                      onTap: () {
+                        showDialog(
+                          context: context,
+                          builder: (context) {
+                            return AlertDialog(
+                              title: Text(
+                                'Delete Product',
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              ),
+                              content: RichText(
+                                text: TextSpan(
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    color: Colors.black,
+                                  ),
+                                  children: [
+                                    TextSpan(
+                                      text: 'Are you sure you want to remove  ',
+                                    ),
+                                    TextSpan(
+                                      text: cartItem['name'],
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                    TextSpan(text: '  from the cart?'),
+                                  ],
+                                ),
+                              ),
+                              actions: [
+                                // No confirmation
+                                TextButton(
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                  child: Text(
+                                    'No',
+                                    style: TextStyle(color: Colors.blue),
+                                  ),
+                                ),
+
+                                // Yes confirmation
+                                TextButton(
+                                  onPressed: () {
+                                    context.read<CartModel>().removeProduct(
+                                      cartItem,
+                                    );
+                                    Navigator.of(context).pop();
+                                  },
+                                  child: Text(
+                                    'Yes',
+                                    style: TextStyle(color: Colors.red),
+                                  ),
+                                ),
+                              ],
+                            );
+                          },
+                        );
+                      },
+                      child: Icon(Icons.delete, color: Colors.red),
+                    ),
                   ),
                 );
               },
