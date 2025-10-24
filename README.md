@@ -25,33 +25,26 @@ This project focuses on **UI & state management** — no backend or payment inte
 ---
 
 ## 🗂 Project Structure
+
+```
 lib/
-├─ core/
-│  └─ utils/
-│     └─ constants.dart          # global constants, colors, etc.
+├─ Models/
+│  └─ data.dart
 │
-├─ data/
-│  ├─ models/
-│  │  ├─ shoe.dart              # Shoe model
-│  │  └─ cart_item.dart         # Cart item model
-│  └─ mock/
-│     └─ mock_shoes.dart       # Static list of products
+├─ Services/
 │
-├─ viewmodel/
-│  ├─ shoe_viewmodel.dart      # Handles product filtering & selection
-│  └─ cart_viewmodel.dart      # Handles cart logic (add/remove/total)
+├─ ViewModels/
+│  └─ cart_model.dart
 │
-├─ view/
-│  ├─ screens/
-│  │  ├─ home_screen.dart
-│  │  ├─ cart_screen.dart
-│  │  └─ checkout_screen.dart
-│  └─ widgets/
-│     ├─ shoe_card.dart
-│     └─ brand_filter.dart
+├─ Views/
+│  ├─ checkout_screen.dart
+│  ├─ home_screen.dart
+│  ├─ product_detail_screen.dart
+│  └─ render_product.dart
 │
-├─ app.dart                    # App setup, theme, routes
-└─ main.dart
+├─ main.dart
+└─ shopping_app.dart
+```
 
 ---
 
